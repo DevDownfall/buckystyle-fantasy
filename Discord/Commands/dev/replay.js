@@ -1,10 +1,11 @@
 module.invalidable = true
 
-const { MessageAttachment } = require('discord.js')
+const { MessageAttachment, MessageEmbed } = require('discord.js')
 const Axios = require('axios')
 const Config = require('../../Utils/Config.js')
 const FormData = require('form-data');
-const Functions = require('../../Utils/functions')
+const Functions = require('../../Utils/functions.js')
+const { execute } = require('../../Utils/database/mysql.ts')
 
 module.exports = {
     name: 'replay',
@@ -78,53 +79,41 @@ module.exports = {
                     var winners = []
                     var losers = []
                     var result;
-
+                    console.log('1')
                     await Axios.get(`https://ballchasing.com/api/replays/${id}`, {
                         headers: { 
                             'Authorization': Config.ballchasing_api, 
                         },
-                    }).then((response) => {
+                    }).then(async (response) => {
+                        console.log('2')
                         if(response.data.status != 'ok') return message.reply('error trying to fetch replay file!')
                         
-                        return Functions.getResult(response.data)
-                        // return console.log(response.data.blue.players.filter((i) => i.stats.core.mvp = True))
-
-                        if(response.data.players[0].cumulative.wins > response.data.players[3].cumulative.wins){
-                            winners = response.data.players[0].team.split('&')
-                            losers = response.data.players[3].team.split('&')
-                        }else if(response.data.players[0].cumulative.wins < response.data.players[3].cumulative.wins){
-                            winners = response.data.players[3].team.split('&')
-                            losers = response.data.players[0].team.split('&')
-                        }else {
-                            winners = []
-                            losers = []
-                            result = 'Tie'
-                        }
-
-                        // await execute(`SELECT * FROM replays WHERE replay_id = ?`, [ id ])
-                        Embed.setTitle(`${response.data.name} - Link: ${response.data.link}`)
-                        Embed.setDescription(`
-                        **Winners:** ${winners}
-                        **Losers:** ${losers}
-                        **Match Length:** ${response.data.players[0].cumulative.play_duration}`)
-
-                        response.data.players.forEach(async (p) => {
-                            const Player = await execute(`SELECT * FROM Players WHERE username = ?`, [ p.name ])
-                            
-                            if(!Player[0]) return await execute(`UPDATE Players SET ${Player[0]}`, [ p.name])
-                            let payload = { username: p.name, team: Team, games: Player[0].games + 1, wins: Player[0] + 1}
+                        const Result = Functions.getResult(response.data)
+                        let Embed = new MessageEmbed()
+                        .setTitle(`${response.data.name} - Link: ${response.data.link}`)
+                        .setDescription(`Match ID - ${response.data.rocket_league_id}
+                        **Winners:** ${Result.winner}
+                        **Losers:** ${Result.loser}
+                        **Match Length:** `)
+                        // console.log(response)
+                        Result.players.forEach(async (p) => {
+                            console.log('3')
+                            const Player = await execute(`SELECT * FROM Players WHERE username = ?`, [ p.player.name ])
+                            const Wins = Result.players.filter((i) => i.name == p.player.name)
+                            if(p.player.mvp == p.player.name) var MVP = true
+                            if(Player[0]) {
+                                let payload2 = { username: p.player.name, games: Player[0].games+1, wins: Wins ? Player[0].wins+1 : 0, losses: Wins ? 0 : Player[0].wins-1, win_percentage: 0.00, shots: Player[0].shots+p.player.stats.core.shots, goals: Player[0].shots+p.player.stats.core.goals, saves: Player[0].shots+p.player.stats.core.saves, assists: Player[0].shots+p.player.stats.core.assists, mvps: MVP ? Player[0].shots+1 : 0, shooting_percentage: p.player.stats.core.shooting_percentage}
+                                return await execute(`UPDATE Players SET ? WHERE username = ?`, [ payload2, p.player.name ])
+                            }
+                            console.log('4')
+                            let payload = { username: p.player.name, games: 1, wins: Wins ? 1 : 0, losses: Wins ? 0: 1, win_percentage: Wins ? 1 : 0.00, shots: p.player.stats.core.shots, goals: p.player.stats.core.goals, saves: p.player.stats.core.saves, assists: p.player.stats.core.assists, mvps: MVP ? 1 : 0, shooting_percentage: p.player.stats.core.shooting_percentage}
                             await execute(`INSERT INTO Players SET ?`, [ payload ])
-                            
                         })
-                        
+                        return message.reply(Embed)
                     })
-
-                    
-
                 }).catch(() => { message.reply('No answer after 30 seconds, operation canceled.'); });
             });
         }
-
         
     }
 }
