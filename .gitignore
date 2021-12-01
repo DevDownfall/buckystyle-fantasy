@@ -1,4 +1,5 @@
 **node_modules/
 Config.js
-Utils/database
+config.js
+**/database
 buckystyle.code-workspace

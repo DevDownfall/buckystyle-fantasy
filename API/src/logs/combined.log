@@ -1,0 +1,28 @@
+info: A root link has been accessed!
+info: A root link has been accessed!
+info: A root link has been accessed!
+error: 400 || Not Found - /fart - GET - ::1
+error: 400 || Not Found - /v1/email/confirmation - GET - ::1
+error: 400 || Not Found - /v1/email/confirmation - GET - ::1
+error: 400 || Not Found - /v1/email/confirmation/ - GET - ::1
+error: 400 || Not Found - /v1/email/confirmation/ - GET - ::1
+error: 400 || Not Found - /v1/email/confirmation/ - GET - ::1
+error: 400 || Not Found - /v1/email/confirmation/ - GET - ::1
+error: 400 || Not Found - /v1 - GET - ::1
+error: 400 || Not Found - /v1 - GET - ::1
+error: 400 || Not Found - /v1 - GET - ::1
+error: 400 || Not Found - /v1 - GET - ::1
+error: 400 || Not Found - /v1 - GET - ::1
+error: 400 || Not Found - /v1/ - GET - ::1
+info: A root link has been accessed!
+error: 400 || Not Found - /v1/email - GET - ::1
+error: 400 || Not Found - /v1/auth/login - POST - ::1
+error: 400 || Not Found - /api/v1/stats/user - GET - ::1
+error: 400 || Not Found - /api/v1/stats/user/all - GET - ::1
+error: 400 || Not Found - /api/v1/stats/user/ - GET - ::1
+error: 400 || Not Found - /api/v1/stats/user/ - GET - ::1
+error: 400 || Not Found - /api/v1 - GET - ::1
+info: A root link has been accessed!
+error: 400 || Not Found - /api/v1/stats/user - GET - ::1
+error: 400 || Not Found - /v1/auth/login - GET - ::1
+error: 400 || Not Found - /v1/auth/login - GET - ::1

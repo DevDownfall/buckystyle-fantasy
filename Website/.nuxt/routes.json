@@ -1,0 +1,37 @@
+[
+  {
+    "name": "dashboard",
+    "path": "/dashboard",
+    "component": "C:\\\\Users\\\\MattyBoi\\\\Documents\\\\Downfall\\\\buckystyle-fantasy\\\\Website\\\\pages\\\\dashboard.vue",
+    "chunkName": "pages/dashboard",
+    "_name": "_b6fe1598"
+  },
+  {
+    "name": "leaderboard",
+    "path": "/leaderboard",
+    "component": "C:\\\\Users\\\\MattyBoi\\\\Documents\\\\Downfall\\\\buckystyle-fantasy\\\\Website\\\\pages\\\\leaderboard.vue",
+    "chunkName": "pages/leaderboard",
+    "_name": "_725b18c6"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "C:\\\\Users\\\\MattyBoi\\\\Documents\\\\Downfall\\\\buckystyle-fantasy\\\\Website\\\\pages\\\\login.vue",
+    "chunkName": "pages/login",
+    "_name": "_499468ee"
+  },
+  {
+    "name": "summary",
+    "path": "/summary",
+    "component": "C:\\\\Users\\\\MattyBoi\\\\Documents\\\\Downfall\\\\buckystyle-fantasy\\\\Website\\\\pages\\\\summary.vue",
+    "chunkName": "pages/summary",
+    "_name": "_e3268974"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\MattyBoi\\\\Documents\\\\Downfall\\\\buckystyle-fantasy\\\\Website\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_118e2872"
+  }
+]

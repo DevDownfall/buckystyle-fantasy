@@ -1,0 +1,10 @@
+todo {
+    1. Finish Quote Page,
+    2. Create Existing Quote Edit Page
+    3. Reimport missing data ['machines']
+    4. Import missing specifications
+}
+
+questions: {
+    '1': Conditions for galvo features and accessories
+}

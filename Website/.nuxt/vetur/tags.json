@@ -1,0 +1,23 @@
+{
+  "CookieConsent": {
+    "description": "Auto imported from components/CookieConsent.vue"
+  },
+  "Dropdown": {
+    "description": "Auto imported from components/Dropdown.vue"
+  },
+  "Footer": {
+    "description": "Auto imported from components/Footer.vue"
+  },
+  "Modal": {
+    "description": "Auto imported from components/Modal.vue"
+  },
+  "Navbar": {
+    "description": "Auto imported from components/Navbar.vue"
+  },
+  "OptionBox": {
+    "description": "Auto imported from components/OptionBox.vue"
+  },
+  "QuoteCard": {
+    "description": "Auto imported from components/QuoteCard.vue"
+  }
+}
